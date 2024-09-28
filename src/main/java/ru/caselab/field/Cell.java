@@ -1,6 +1,6 @@
 package ru.caselab.field;
 
-import ru.caselab.state.CellState;
+import ru.caselab.enumeration.CellState;
 
 public class Cell {
     private CellState cellState = CellState.EMPTY;
