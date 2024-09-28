@@ -1,7 +1,6 @@
 package ru.caselab.player;
 
 import ru.caselab.field.Move;
-import ru.caselab.field.Ship;
 
 import java.util.Random;
 
@@ -12,22 +11,7 @@ public class Computer extends Player {
 
     @Override
     public void arrangeShips() {
-        Ship ship = new Ship(4, 1, 0, 0);
-        int position = ship.getPosition();
-        int deckNum = ship.getSafeDecksNum();
-        int x = ship.getX();
-        int y = ship.getY();
-
-        if (position == 1) {
-            for (int offset = 0; offset < deckNum; offset++) {
-                ship.addCell(field.getCell(x + offset, y));
-            }
-        } else if (position == 2) {
-            for (int offset = 0; offset < deckNum; offset++) {
-                ship.addCell(field.getCell(x, y + offset));
-            }
-        }
-        field.addShip(ship);
+        shipsArranger.autoArrangeShips(field);
     }
 
     @Override
