@@ -3,9 +3,10 @@ package ru.caselab;
 import ru.caselab.drawer.Drawer;
 import ru.caselab.field.Cell;
 import ru.caselab.field.Move;
+import ru.caselab.player.Human;
 import ru.caselab.player.Player;
-import ru.caselab.state.CellState;
-import ru.caselab.state.GameState;
+import ru.caselab.enumeration.CellState;
+import ru.caselab.enumeration.GameState;
 
 import java.util.Random;
 
@@ -45,15 +46,22 @@ public class Game {
         while (gameState != GameState.END) {
             drawer.drawMove(currentPlayer, currentEnemy);
 
-            Move currentMove = currentPlayer.makeMove();
-            Cell moveCell = currentEnemy.getCell(currentMove.x(), currentMove.y());
+            Move currentMove;
+            Cell moveCell;
+            while (true) {
+                currentMove = currentPlayer.makeMove();
+                moveCell = currentEnemy.getCell(currentMove.x(), currentMove.y());
+
+                if (moveCell.getCellState() == CellState.EMPTY || moveCell.getCellState() == CellState.SHIP) {
+                    break;
+                } else if (currentPlayer instanceof Human){
+                    drawer.drawWrongMove();
+                }
+            }
 
             boolean isMoveSuccessful = isMoveSuccessful(moveCell);
-
             drawer.drawMoveResult(moveCell.getCellState());
-
             checkGameStatus();
-
             drawer.drawEnemyField(currentEnemy);
 
             if (!isMoveSuccessful) {

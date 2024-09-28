@@ -1,6 +1,7 @@
 package ru.caselab.field;
 
-import ru.caselab.state.CellState;
+import ru.caselab.enumeration.CellState;
+import ru.caselab.enumeration.ShipPosition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +11,10 @@ public class Ship {
     private int safeDecksNum;
     private final int x;
     private final int y;
-    private final int position;
+    private final ShipPosition position;
     private final List<Cell> cells = new ArrayList<>();
 
-    public Ship(int size, int position, int x, int y) {
+    public Ship(int size, ShipPosition position, int x, int y) {
         this.safeDecksNum = size;
         this.position = position;
         this.x = x;
@@ -28,7 +29,7 @@ public class Ship {
         return safeDecksNum;
     }
 
-    public int getPosition() {
+    public ShipPosition getPosition() {
         return position;
     }
 

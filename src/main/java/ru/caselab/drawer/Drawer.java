@@ -1,7 +1,7 @@
 package ru.caselab.drawer;
 
 import ru.caselab.player.Player;
-import ru.caselab.state.CellState;
+import ru.caselab.enumeration.CellState;
 
 public interface Drawer {
     void drawPlayerField(Player player);
@@ -10,4 +10,5 @@ public interface Drawer {
     void drawSkip(Player player, Player enemy);
     void drawGameEnd(Player winner);
     void drawMoveResult(CellState newCellState);
+    void drawWrongMove();
 }

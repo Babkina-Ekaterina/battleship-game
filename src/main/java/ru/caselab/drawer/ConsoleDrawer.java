@@ -3,7 +3,7 @@ package ru.caselab.drawer;
 import ru.caselab.field.Field;
 import ru.caselab.player.Human;
 import ru.caselab.player.Player;
-import ru.caselab.state.CellState;
+import ru.caselab.enumeration.CellState;
 
 public class ConsoleDrawer implements Drawer {
     @Override
@@ -97,5 +97,10 @@ public class ConsoleDrawer implements Drawer {
             case DEAD -> System.out.println("Drawn! \n");
         }
 
+    }
+
+    @Override
+    public void drawWrongMove() {
+        System.out.println("\nYou have already targeted this cell. Please choose another one");
     }
 }
